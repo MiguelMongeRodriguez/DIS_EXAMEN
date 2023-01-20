@@ -15,10 +15,10 @@ public class Formulario extends VerticalLayout {
     TextField nombre = new TextField("nombre");
     TextField categoria = new TextField("Categoría");
     TextField precio = new TextField("Precio");
-    TextField EAN13 = new TextField("EAN13");
+    TextField ean13 = new TextField("EAN13");
 
     public Formulario(Dialog dialog) {
-        add(nombre, categoria, precio, EAN13);
+        add(nombre, categoria, precio, ean13);
 
         Button guardar = new Button("Guardar");
         guardar.addClickListener(e -> guardarForm(dialog));
@@ -39,7 +39,7 @@ public class Formulario extends VerticalLayout {
         nuevoProd.setNombre(nombre.getValue());
         nuevoProd.setCategoria(categoria.getValue());
         nuevoProd.setPrecio(Float.valueOf(precio.getValue().toString()));
-        nuevoProd.setEan13(Long.parseLong(precio.getValue().toString()));
+        nuevoProd.setEan13(Long.parseLong(ean13.getValue().toString()));
         restTemplate.postForEntity("http://localhost:8090/Productos", nuevoProd, Producto.class);
         dialog.close();
     }
