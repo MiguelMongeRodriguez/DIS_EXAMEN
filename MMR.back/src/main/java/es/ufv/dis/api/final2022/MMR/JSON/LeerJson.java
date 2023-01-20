@@ -1,4 +1,4 @@
-package es.ufv.dis.api.final2022.MMR.Lectura;
+package es.ufv.dis.api.final2022.MMR.JSON;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

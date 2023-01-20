@@ -1,7 +1,8 @@
 package es.ufv.dis.api.final2022.MMR.Service;
 
 import com.google.gson.Gson;
-import es.ufv.dis.api.final2022.MMR.Lectura.LeerJson;
+import es.ufv.dis.api.final2022.MMR.JSON.LeerJson;
+import es.ufv.dis.api.final2022.MMR.PDF.PDFManager;
 import es.ufv.dis.api.final2022.MMR.Producto;
 
 import java.io.FileWriter;
@@ -10,7 +11,9 @@ import java.util.ArrayList;
 
 
 public class ProductoService {
-    
+
+    PDFManager pdfManager = new PDFManager();
+
     public Producto AltaProducto(Producto producto) {
         Gson gson = new Gson();
         ArrayList<Producto> listaProductos = new LeerJson().leeFicheroJson();
@@ -28,7 +31,9 @@ public class ProductoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-            return producto;
+
+        pdfManager.crearPDF(listaProductos);//Backup
+        return producto;
     }
 
     public void DeleteProducto(int productoID) {
@@ -44,14 +49,15 @@ public class ProductoService {
         }
         listaFinal = actualizarIds(listaFinal);
 
-
         try {
-            FileWriter writer = new FileWriter("./src/main/resources/twitter.json");
+            FileWriter writer = new FileWriter("./src/main/resources/Productos.json");
             writer.write(gson.toJson(listaFinal));
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        pdfManager.crearPDF(listaProductos);//Backup
     }
 
     public ArrayList<Producto> actualizarIds(ArrayList<Producto> listaProductos) {
