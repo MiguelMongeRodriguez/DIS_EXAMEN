@@ -1,4 +1,4 @@
-package es.ufv.dis.api.final2022.MMR;
+package org.vaadin.example;
 
 import com.google.gson.annotations.Expose;
 
