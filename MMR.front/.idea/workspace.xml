@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ededa28-d4dc-4559-a0ee-df2c6857eb45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/vaadin/example/View/MainView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/vaadin/example/GreetService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/vaadin/example/MainView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/vaadin/example/Service/Formulario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/vaadin/example/Service/Formulario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/vaadin/example/View/View_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/vaadin/example/View/View_1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

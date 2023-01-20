@@ -25,9 +25,8 @@ import java.util.ArrayList;
 @PageTitle("Productos")
 public class View_1 extends VerticalLayout {
     Grid<Producto> grid = new Grid<>(Producto.class);
-    Formulario formulario = new Formulario();
     Dialog ventana = new Dialog();
-    Button add = new Button("Quiero darme de Alta");
+    Formulario formulario = new Formulario(ventana);
 
     public View_1() {
 
@@ -39,12 +38,18 @@ public class View_1 extends VerticalLayout {
                 getToolbar(),
                 getContent()
         );
+        ventana.add(formulario);
+        ventana.setModal(false);
     }
 
     private Component getToolbar() {
         Button DeleteButton = new Button("Eliminar Producto seleccionado");
         DeleteButton.addClickListener(e -> eliminarProductoSeleccionado());
-        HorizontalLayout toolbar=new HorizontalLayout(DeleteButton);
+
+        Button addButton = new Button("Agregar Producto");
+        addButton.addClickListener(e -> AltaProducto());
+
+        HorizontalLayout toolbar = new HorizontalLayout(DeleteButton, addButton);
         toolbar.addClassName("Toolbar");
         return toolbar;
     }
@@ -53,9 +58,12 @@ public class View_1 extends VerticalLayout {
         Producto producto = grid.getSelectedItems().iterator().next();
         int productoID = producto.getId();
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete("http://localhost:8090/DELETE/{productoID}", productoID);
+        restTemplate.delete("http://localhost:8090/Productos/{productoID}", productoID);
 
         configureGrid();
+    }
+    private void AltaProducto (){
+        ventana.open();
     }
     private Component getContent() {
         HorizontalLayout content= new HorizontalLayout(grid);
@@ -75,5 +83,10 @@ public class View_1 extends VerticalLayout {
 
         grid.setColumns("id","nombre","categoria","precio", "ean13");
         grid.setItems(listaProductos);
+
+        /*
+        grid.addItemDoubleClickListener(event->
+                editarObjeto(event.getItem())
+        );*/
     }
 }
